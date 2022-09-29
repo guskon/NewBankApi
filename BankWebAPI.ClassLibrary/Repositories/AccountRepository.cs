@@ -28,5 +28,21 @@ namespace BankWebAPI.ClassLibrary.Repositories
 
         }
 
+
+        public async Task UpdateAccountTypesAsync(Account account)
+        {
+            var commandText = $@"UPDATE account
+                SET account_type = @account_type WHERE id = @id";
+
+            var queryArgs = new
+            {
+                id = account.Id,
+                account_type = account.AccountType
+            };
+
+            await _connection.ExecuteAsync(commandText, queryArgs);
+        }
     }
-}
+
+    }
+
