@@ -29,7 +29,7 @@ namespace BankWebAPI.Helpers
                     case ArgumentNullException e:
                         response.StatusCode = (int)HttpStatusCode.NotFound;
                         break;
-                    case NpgsqlException ex:
+                    case Exception e:
                         response.StatusCode = (int)HttpStatusCode.BadRequest;
                         break;
                     default:

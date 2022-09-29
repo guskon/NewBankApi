@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BankWebAPI.ClassLibrary.Entities;
+using BankWebAPI.DTOs;
 
 namespace BankWebAPI.Profiles
 {
@@ -6,7 +8,8 @@ namespace BankWebAPI.Profiles
     {
         public MappingProfile()
         {
-
+            CreateMap<ClientInsertDTO, Client>();
+            CreateMap<Client, ClientInsertDTO>();
         }
     }
 }
