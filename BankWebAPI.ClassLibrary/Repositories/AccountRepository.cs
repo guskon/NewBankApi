@@ -42,6 +42,20 @@ namespace BankWebAPI.ClassLibrary.Repositories
 
             await _connection.ExecuteAsync(commandText, queryArgs);
         }
+
+        public async Task UpdateAccountBalanceAsync(Account account)
+        {
+            var commandText = $@"UPDATE account
+                SET balance = balance + @balance WHERE id = @id";
+
+            var queryArgs = new
+            {
+                id = account.Id,
+                balance = account.Balance
+            };
+
+            await _connection.ExecuteAsync(commandText, queryArgs);
+        }
     }
 
     }
