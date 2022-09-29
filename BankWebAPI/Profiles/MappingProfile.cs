@@ -13,6 +13,8 @@ namespace BankWebAPI.Profiles
             CreateMap<Account, CreateAccountDTO>();
             CreateMap<AccountTypesUpdateDTO, Account>();
             CreateMap<Account, AccountTypesUpdateDTO>();
+            CreateMap<AccountBalanceTopopDTO, Account>();
+            CreateMap<Account, AccountBalanceTopopDTO>();
         }
     }
 }
