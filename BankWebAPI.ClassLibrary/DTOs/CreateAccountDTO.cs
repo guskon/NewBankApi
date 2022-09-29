@@ -8,9 +8,9 @@ namespace BankWebAPI.DTOs
 {
     public class CreateAccountDTO
     {
-        public int AccountNumber { get; set; }
+        public string AccountNumber { get; set; }
         public string AccountType { get; set; }
-        public int Balance { get; set; }
+        public double Balance { get; set; }
 
     }
 }
