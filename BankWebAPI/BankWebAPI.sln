@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankWebAPI", "BankWebAPI.csproj", "{3FB838E7-A448-4D05-B11F-79088D3F1281}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankWebAPI.ClassLibrary", "..\BankWebAPI.ClassLibrary\BankWebAPI.ClassLibrary.csproj", "{E8FA5342-768E-4ED7-9228-B05B4AAC2EB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankWebAPI.ClassLibrary", "..\BankWebAPI.ClassLibrary\BankWebAPI.ClassLibrary.csproj", "{9B9AF7F5-C791-4A00-8346-E65679FFF717}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankWebAPI.DatabaseUpdater", "..\BankWebAPI.DatabaseUpdater\BankWebAPI.DatabaseUpdater.csproj", "{392B50D1-53CA-4F9B-878E-3674A67F20C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankWebAPI.DatabaseUpdater", "..\BankWebAPI.DatabaseUpdater\BankWebAPI.DatabaseUpdater.csproj", "{C0C24D95-A7B9-48F2-96A3-ABA90981346F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{3FB838E7-A448-4D05-B11F-79088D3F1281}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FB838E7-A448-4D05-B11F-79088D3F1281}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FB838E7-A448-4D05-B11F-79088D3F1281}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8FA5342-768E-4ED7-9228-B05B4AAC2EB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8FA5342-768E-4ED7-9228-B05B4AAC2EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8FA5342-768E-4ED7-9228-B05B4AAC2EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8FA5342-768E-4ED7-9228-B05B4AAC2EB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{392B50D1-53CA-4F9B-878E-3674A67F20C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{392B50D1-53CA-4F9B-878E-3674A67F20C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{392B50D1-53CA-4F9B-878E-3674A67F20C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{392B50D1-53CA-4F9B-878E-3674A67F20C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B9AF7F5-C791-4A00-8346-E65679FFF717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B9AF7F5-C791-4A00-8346-E65679FFF717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B9AF7F5-C791-4A00-8346-E65679FFF717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B9AF7F5-C791-4A00-8346-E65679FFF717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C24D95-A7B9-48F2-96A3-ABA90981346F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C24D95-A7B9-48F2-96A3-ABA90981346F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C24D95-A7B9-48F2-96A3-ABA90981346F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C24D95-A7B9-48F2-96A3-ABA90981346F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
