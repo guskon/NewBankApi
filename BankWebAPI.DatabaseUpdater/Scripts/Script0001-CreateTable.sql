@@ -4,4 +4,4 @@
 	street VARCHAR(50) NOT NULL,
 	city VARCHAR(50) NOT NULL,
 	country_code VARCHAR(10) NOT NULL
-)
+);

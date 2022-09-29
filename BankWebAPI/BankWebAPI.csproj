@@ -18,4 +18,8 @@
     <Folder Include="DTOs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BankWebAPI.ClassLibrary\BankWebAPI.ClassLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
