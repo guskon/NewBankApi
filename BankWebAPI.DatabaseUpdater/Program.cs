@@ -3,10 +3,8 @@ using System.Reflection;
 
 var connectionString =
         args.FirstOrDefault()
-        ?? "Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=Postgre";
-
+        ?? "Server=localhost; Database=bank_db; User Id=postgres; Password=Postgre";
 EnsureDatabase.For.PostgresqlDatabase(connectionString);
-
 var upgrader =
     DeployChanges.To
         .PostgresqlDatabase(connectionString)
@@ -31,3 +29,4 @@ Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Success!");
 Console.ResetColor();
 return 0;
+
