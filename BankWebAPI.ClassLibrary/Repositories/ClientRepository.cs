@@ -1,6 +1,7 @@
 ﻿using BankWebAPI.ClassLibrary.Entities;
 using Dapper;
 using Npgsql;
+using System.Security.Principal;
 
 namespace BankWebAPI.ClassLibrary.Repositories
 {
@@ -51,6 +52,41 @@ namespace BankWebAPI.ClassLibrary.Repositories
             });
         }
 
+        public async Task<bool> MakeTransactionDBAsync(int accountId1, int accountId2, double sum)
+        {
+            Account account1 = await _connection.QuerySingleOrDefaultAsync<Account>("SELECT account_number AccountNumber, creation_date CreationDate, account_type AccountType, balance, client_id ClientId FROM account WHERE id = @Id", new
+            {
+                Id = accountId1
+            });
+
+            Account account2 = await _connection.QuerySingleOrDefaultAsync<Account>("SELECT account_number AccountNumber, creation_date CreationDate, account_type AccountType, balance, client_id ClientId FROM account WHERE id = @Id", new
+            {
+                Id = accountId2
+            });
+
+            double balance1 = account1.Balance;
+            double balance2 = account2.Balance;
+            if (balance1 >= sum)
+            {
+                await _connection.ExecuteAsync("UPDATE account SET balance = @balance WHERE id = @id", new
+                {
+                    balance = balance1 - sum,
+                    id = accountId1,
+                });
+
+                await _connection.ExecuteAsync("UPDATE account SET balance = @balance WHERE id = @id", new
+                {
+                    balance = balance2 + sum,
+                    id = accountId2,
+                });
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public async Task<Client> GetClientByPersonalCodeDBAsync(string personalCode)
         {

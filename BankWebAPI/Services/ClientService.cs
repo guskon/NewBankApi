@@ -36,7 +36,7 @@ namespace BankWebAPI.Services
         {
             if (await GetClientByIdAsync(id) == null)
             {
-                throw new ArgumentNullException("Client not found!");
+                throw new ArgumentNullException("Client was not found!");
             }
             else
             {
@@ -54,7 +54,19 @@ namespace BankWebAPI.Services
             }
             else
             {
-                throw new ArgumentNullException("Client not found!");
+                throw new ArgumentNullException("Client was not found!");
+            }
+        }
+
+        public async Task MakeTransaction(TransactionDTO values)
+        {
+            if (await _clientRepository.MakeTransactionDBAsync(values.AccountId1, values.AccountId2, values.Sum))
+            {
+                await _clientRepository.MakeTransactionDBAsync(values.AccountId1, values.AccountId2, values.Sum);
+            }
+            else
+            {
+                throw new Exception("Sum is larger than account balance!");
             }
         }
 

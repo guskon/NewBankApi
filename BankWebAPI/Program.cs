@@ -1,5 +1,6 @@
 using BankWebAPI.ClassLibrary.Extensions;
 using BankWebAPI.Controllers;
+using BankWebAPI.Helpers;
 using BankWebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ builder.Services.AddTransient<AccountService>();
 builder.Services.AddTransient<AddressService>();
 builder.Services.AddTransient<AccountTypeService>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +27,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 

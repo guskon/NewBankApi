@@ -43,5 +43,13 @@ namespace BankWebAPI.Controllers
             await _clientService.AssignAccountToClientAsync(ids);
             return NoContent();
         }
+
+        [HttpPost("Transaction")]
+        public async Task<IActionResult> Transaction(TransactionDTO values)
+        {
+            await _clientService.MakeTransaction(values);
+
+            return NoContent();
+        }
     }
 }
