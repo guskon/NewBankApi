@@ -21,6 +21,10 @@ namespace BankWebAPI.Profiles
             CreateMap<AccountType, CreateAccountTypeDTOs>();
             CreateMap<AccountDTO, Account>();
             CreateMap<Account, AccountDTO>();
+            CreateMap<AddressDTO, Address>();
+            CreateMap<Address, AddressDTO>();
+            CreateMap<Client, ClientGetDTO>();
+            CreateMap<ClientGetDTO, Client>();
         }
     }
 }
