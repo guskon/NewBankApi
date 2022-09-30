@@ -36,13 +36,5 @@ namespace BankWebAPI.Controllers
         {
             return Ok(await _clientService.GetClientByIdAsync(id));
         }
-
-        [HttpPut]
-        public async Task<IActionResult> AssignAccountToClient(AssignAccountClientDTO ids)
-        {
-            await _clientService.AssignAccountToClientAsync(ids);
-
-            return NoContent();
-        }
     }
 }
