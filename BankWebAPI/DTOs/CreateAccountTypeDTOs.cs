@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.ClassLibrary.DTOs
 {
-    public class CreateAccountTypeDTO
+    public class CreateAccountTypeDTOs
     {
-        public string Name { get; set; }
+        public string Type { get; set; }
     }
 }

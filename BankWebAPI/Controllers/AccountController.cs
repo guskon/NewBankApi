@@ -1,4 +1,5 @@
 ﻿using BankWebAPI.ClassLibrary.DTOs;
+using BankWebAPI.ClassLibrary.Entities;
 using BankWebAPI.DTOs;
 using BankWebAPI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -34,13 +35,6 @@ namespace BankWebAPI.Controllers
         public async Task<IActionResult> UpdateAccountBalance(AccountBalanceTopopDTO accountBalanceTopopDTO)
         {
             await _accountService.UpdateAccountBalance(accountBalanceTopopDTO);
-            return StatusCode(201);
-        }
-
-        [HttpPost("account type")]
-        public async Task<IActionResult> AddAcountTypeAsync(CreateAccountTypeDTO createAccountType)
-        {
-            await _accountService.AddAcountTypeAsync(createAccountType);
             return StatusCode(201);
         }
 
