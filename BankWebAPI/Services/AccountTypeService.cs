@@ -35,7 +35,7 @@ namespace BankWebAPI.Services
             }
             else
             {
-                throw new ArgumentNullException("Client not found!");
+                throw new ArgumentNullException("Account type not found!");
             }
         }
         public async Task UpdateAccountTypeAsync(int id, CreateAccountTypeDTOs createAccountTypeDTOs)
