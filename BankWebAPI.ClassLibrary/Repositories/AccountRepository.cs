@@ -27,18 +27,42 @@ namespace BankWebAPI.ClassLibrary.Repositories
 
         }
 
-        public async Task UpdateAccountBalanceAsync(Account account)
+
+        public async Task UpdateAccountTypesAsync(Account account)
+        {
+            var commandText = $@"UPDATE account
+                SET account_type = @account_type WHERE id = @id";
+
+            var queryArgs = new
+            {
+                id = account.Id,
+                account_type = account.AccountType
+            };
+
+            await _connection.ExecuteAsync(commandText, queryArgs);
+        }
+
+        public async Task UpdateAccountBalanceAsync(int id, Account account)
         {
             var commandText = $@"UPDATE account
                 SET balance = balance + @balance WHERE id = @id";
 
             var queryArgs = new
             {
-                id = account.Id,
+                id = id,
                 balance = account.Balance
             };
 
             await _connection.ExecuteAsync(commandText, queryArgs);
+        }
+
+
+        public async Task<AccountType> GetAccountByAccountNumber(string accountNumber)
+        {
+            return _connection.QuerySingleOrDefault<AccountType>("SELECT * FROM account WHERE account_number=@accountNumber", new
+            {
+                accountNumber
+            });
         }
 
 
@@ -56,6 +80,14 @@ namespace BankWebAPI.ClassLibrary.Repositories
             {
                 account_number = accountNumber
             }); ;
+        }
+
+        public async Task<List<Account>> GetByTypeIdAsync(int id)
+        {
+            var getAllQuery = "SELECT id Id, account_number AccountNumber, creation_date CreationDate, account_type AccountType, balance, client_id ClientId FROM account WHERE account_type = @id";
+            var ShopItemEntity = getAllQuery;
+            var entities = await _connection.QueryAsync<Account>(getAllQuery, new {id});
+            return entities.ToList();
         }
     }
 

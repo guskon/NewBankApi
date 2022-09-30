@@ -41,7 +41,6 @@ namespace BankWebAPI.Controllers
         public async Task<IActionResult> AssignAccountToClient(AssignAccountClientDTO ids)
         {
             await _clientService.AssignAccountToClientAsync(ids);
-
             return NoContent();
         }
 

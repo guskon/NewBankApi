@@ -24,10 +24,17 @@ namespace BankWebAPI.Controllers
             return StatusCode(201);
         }
 
-        [HttpPut("balance")]
-        public async Task<IActionResult> UpdateAccountBalance(AccountBalanceTopopDTO accountBalanceTopopDTO)
+        [HttpPut]
+        public async Task<IActionResult> UpdateAccountTypesAsync(AccountTypesUpdateDTO accountTypesUpdateDTO)
         {
-            await _accountService.UpdateAccountBalance(accountBalanceTopopDTO);
+            await _accountService.UpdateAccountTypesAsync(accountTypesUpdateDTO);
+            return StatusCode(201);
+        }
+
+        [HttpPut("balance")]
+        public async Task<IActionResult> UpdateAccountBalance(int id, AccountBalanceTopopDTO accountBalanceTopopDTO)
+        {
+            await _accountService.UpdateAccountBalance(id, accountBalanceTopopDTO);
             return StatusCode(201);
         }
 
@@ -35,6 +42,12 @@ namespace BankWebAPI.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             return Ok(await _accountService.GetAccountByIdAsync(id));
+        }
+
+        [HttpGet("getAcountByType/{id}")]
+        public async Task<IActionResult> GetByTypeId(int id)
+        {
+            return Ok(await _accountService.GetByTypeIdAsync(id));
         }
     }
 }

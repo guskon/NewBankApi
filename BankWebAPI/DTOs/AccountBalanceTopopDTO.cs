@@ -8,7 +8,6 @@ namespace BankWebAPI.ClassLibrary.DTOs
 {
     public class AccountBalanceTopopDTO
     {
-        public int Id { get; set; }
         public double Balance { get; set; }
     }
 }

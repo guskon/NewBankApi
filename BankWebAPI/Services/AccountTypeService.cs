@@ -25,18 +25,10 @@ namespace BankWebAPI.Services
             await _accountTypeRepository.AddAcountTypeAsync(_mapper.Map<AccountType>(createAccountType));
         }
 
-        public async Task<CreateAccountTypeDTOs> GetAccountTypeAsync()
+        public async Task<List<AccountType>> GetAccountTypeAsync()
         {
-            AccountType accountType = await _accountTypeRepository.GetAccountTypeAsync();
-
-            if (accountType != null)
-            {
-                return _mapper.Map<CreateAccountTypeDTOs>(accountType);
-            }
-            else
-            {
-                throw new ArgumentNullException("Account type not found!");
-            }
+            var data = await _accountTypeRepository.GetAllTypesAsyncs();
+            return data;
         }
         public async Task UpdateAccountTypeAsync(int id, CreateAccountTypeDTOs createAccountTypeDTOs)
         {
@@ -47,6 +39,18 @@ namespace BankWebAPI.Services
             else
             {
                 await _accountTypeRepository.UpdateAccountTypeAsync(id, _mapper.Map<AccountType>(createAccountTypeDTOs));
+            }
+        }
+
+        public async Task DeleteAccountTypeById(int id)
+        {
+            if (await _accountTypeRepository.GetAccountTypeByIdDBAsync(id) == null)
+            {
+                throw new ArgumentNullException("Account type not found!");
+            }
+            else
+            {
+                await _accountTypeRepository.DeleteAccountTypeById(id);
             }
         }
 
