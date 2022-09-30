@@ -37,5 +37,12 @@ namespace BankWebAPI.Controllers
             return StatusCode(201);
         }
 
+        [HttpPost("account type")]
+        public async Task<IActionResult> AddAcountTypeAsync(CreateAccountTypeDTO createAccountType)
+        {
+            await _accountService.AddAcountTypeAsync(createAccountType);
+            return StatusCode(201);
+        }
+
     }
 }

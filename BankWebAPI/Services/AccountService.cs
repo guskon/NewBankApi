@@ -30,5 +30,11 @@ namespace BankWebAPI.Services
         {
             await _accountRepository.UpdateAccountBalanceAsync(_mapper.Map<Account>(accountBalanceTopopDTO));
         }
+
+        public async Task AddAcountTypeAsync(CreateAccountTypeDTO createAccountType)
+        {
+            await _accountRepository.AddAcountTypeAsync(_mapper.Map<AccountType>(createAccountType));
+        }
+
     }
 }
