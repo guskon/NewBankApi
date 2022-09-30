@@ -1,4 +1,5 @@
 using BankWebAPI.ClassLibrary.Extensions;
+using BankWebAPI.Controllers;
 using BankWebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ builder.Services.AddRepositories(builder.Configuration);
 builder.Services.AddTransient<ClientService>();
 builder.Services.AddTransient<AccountService>();
 builder.Services.AddTransient<AddressService>();
+builder.Services.AddTransient<AccountTypeService>();
 
 var app = builder.Build();
 
