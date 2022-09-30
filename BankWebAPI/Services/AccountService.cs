@@ -55,5 +55,12 @@ namespace BankWebAPI.Services
                 return _mapper.Map<AccountDTO>(await _accountRepository.GetAccountByIdDBAsync(id));
             }
         }
+
+
+        public async Task<List<Account>> GetByTypeIdAsync(int id)
+        {
+            var data = await _accountRepository.GetByTypeIdAsync(id);
+            return data;
+        }
     }
 }
