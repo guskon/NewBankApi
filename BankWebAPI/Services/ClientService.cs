@@ -44,13 +44,13 @@ namespace BankWebAPI.Services
             }
         }
 
-        public async Task<ClientInsertDTO> GetClientByIdAsync(int id)
+        public async Task<ClientGetDTO> GetClientByIdAsync(int id)
         {
             Client client = await _clientRepository.GetClientByIdDBAsync(id);
 
             if (client != null)
             {
-                return _mapper.Map<ClientInsertDTO>(client);
+                return _mapper.Map<ClientGetDTO>(client);
             }
             else
             {
@@ -76,7 +76,5 @@ namespace BankWebAPI.Services
                 throw new ArgumentNullException("Client was not found!");
             }
         }
-
-
     }
 }

@@ -1,12 +1,6 @@
 ﻿using BankWebAPI.ClassLibrary.Entities;
 using Dapper;
 using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BankWebAPI.ClassLibrary.Repositories
 {
@@ -31,11 +25,12 @@ namespace BankWebAPI.ClassLibrary.Repositories
 
         public async Task UpdateClientDBAsync(int id, Client client)
         {
-            await _connection.ExecuteAsync("UPDATE clients SET first_name = @first_name, last_name = @last_name, personal_code = @personal_code", new
+            await _connection.ExecuteAsync("UPDATE clients SET first_name = @first_name, last_name = @last_name, personal_code = @personal_code WHERE id = @id", new
             {
                 first_name = client.FirstName,
                 last_name = client.LastName,
                 personal_code = client.PersonalCode,
+                id = id
             });
         }
 
@@ -50,7 +45,7 @@ namespace BankWebAPI.ClassLibrary.Repositories
 
         public async Task<Client> GetClientByIdDBAsync(int id)
         {
-            return _connection.QuerySingleOrDefault<Client>("SELECT first_name FirstName, last_name LastName, personal_code PersonalCode FROM clients WHERE id=@Id", new
+            return _connection.QuerySingleOrDefault<Client>("SELECT first_name FirstName, last_name LastName, personal_code PersonalCode, address_id AddressId FROM clients WHERE id=@Id", new
             {
                 id
             });
