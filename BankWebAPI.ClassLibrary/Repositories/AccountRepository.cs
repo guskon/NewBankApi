@@ -42,7 +42,7 @@ namespace BankWebAPI.ClassLibrary.Repositories
             await _connection.ExecuteAsync(commandText, queryArgs);
         }
 
-        public async Task UpdateAccountBalanceAsync(Account account)
+        public async Task UpdateAccountBalanceAsync(int id, Account account)
         {
             var commandText = $@"UPDATE account
                 SET balance = balance + @balance WHERE id = @id";
@@ -56,13 +56,6 @@ namespace BankWebAPI.ClassLibrary.Repositories
             await _connection.ExecuteAsync(commandText, queryArgs);
         }
 
-        public async Task<AccountType> GetAccountByIdDBAsync(int id)
-        {
-            return _connection.QuerySingleOrDefault<AccountType>("SELECT * FROM account WHERE id=@Id", new
-            {
-                id
-            });
-        }
 
         public async Task<AccountType> GetAccountByAccountNumber(string accountNumber)
         {

@@ -32,7 +32,7 @@ namespace BankWebAPI.Controllers
         }
 
         [HttpPut("balance")]
-        public async Task<IActionResult> UpdateAccountBalance(AccountBalanceTopopDTO accountBalanceTopopDTO)
+        public async Task<IActionResult> UpdateAccountBalance(int id, AccountBalanceTopopDTO accountBalanceTopopDTO)
         {
             await _accountService.UpdateAccountBalance(id, accountBalanceTopopDTO);
             return StatusCode(201);

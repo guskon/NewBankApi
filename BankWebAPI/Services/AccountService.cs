@@ -18,7 +18,12 @@ namespace BankWebAPI.Services
 
         public async Task AddAsync(CreateAccountDTO createAccount)
         {
-            await _accountRepository.AddAsyncs(_mapper.Map<Account>(createAcount));
+            if (await _accountRepository.GetAccountByAccountNumberDBAsync(createAccount.AccountNumber) != null)
+            {
+                throw new Exception("Account by this account code already exists!");
+            }
+
+            await _accountRepository.AddAsync(_mapper.Map<Account>(createAccount));
         }
 
         public async Task UpdateAccountTypesAsync(AccountTypesUpdateDTO cupdateAcountType)
