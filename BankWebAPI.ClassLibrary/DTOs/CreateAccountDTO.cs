@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BankWebAPI.ClassLibrary.Entities
+namespace BankWebAPI.DTOs
 {
-    public class Account
+    public class CreateAccountDTO
     {
-        public int Id { get; set; }
         public string AccountNumber { get; set; }
         public string AccountType { get; set; }
         public double Balance { get; set; }
-        public int ClientId { get; set; }
+
     }
 }
