@@ -16,14 +16,14 @@ namespace BankWebAPI.Services
             _mapper = mapper;
         }
 
-        public async Task AddAsync(CreateAccountDTO createAcount)
+        public async Task AddAsync(CreateAccountDTO createAccount)
         {
-            await _accountRepository.AddAsyncs(_mapper.Map<Account>(createAcount));
-        }
+            if (await _accountRepository.GetAccountByAccountNumberDBAsync(createAccount.AccountNumber) != null)
+            {
+                throw new Exception("Account by this account code already exists!");
+            }
 
-        public async Task UpdateAccountTypesAsync(AccountTypesUpdateDTO cupdateAcountType)
-        {
-            await _accountRepository.UpdateAccountTypesAsync(_mapper.Map<Account>(cupdateAcountType));
+            await _accountRepository.AddAsync(_mapper.Map<Account>(createAccount));
         }
 
         public async Task UpdateAccountBalance(AccountBalanceTopopDTO accountBalanceTopopDTO)
@@ -31,7 +31,16 @@ namespace BankWebAPI.Services
             await _accountRepository.UpdateAccountBalanceAsync(_mapper.Map<Account>(accountBalanceTopopDTO));
         }
 
-
-
+        public async Task<AccountDTO> GetAccountByIdAsync(int id)
+        {
+            if (await _accountRepository.GetAccountByIdDBAsync(id) == null)
+            {
+                throw new ArgumentNullException("Account was not found!");
+            }
+            else
+            {
+                return _mapper.Map<AccountDTO>(await _accountRepository.GetAccountByIdDBAsync(id));
+            }
+        }
     }
 }
