@@ -8,12 +8,14 @@ namespace BankWebAPI.Services
     public class ClientService
     {
         private readonly ClientRepository _clientRepository;
+        private readonly AccountService _accountService;
         private readonly IMapper _mapper;
 
-        public ClientService(ClientRepository clientRepository, IMapper mapper)
+        public ClientService(ClientRepository clientRepository, IMapper mapper, AccountService accountService)
         {
             _mapper = mapper;
             _clientRepository = clientRepository;
+            _accountService = accountService;
         }
 
 
@@ -55,5 +57,26 @@ namespace BankWebAPI.Services
                 throw new ArgumentNullException("Client not found!");
             }
         }
+
+        public async Task AssignAccountToClientAsync(AssignAccountClientDTO ids)
+        {
+            if (await GetClientByIdAsync(ids.ClientId) != null)
+            {
+                if (await _accountService.GetAccountByIdAsync(ids.AccountId) != null)
+                {
+                    await _clientRepository.AssignAccountToClientDBAsync(ids.ClientId, ids.AccountId);
+                }
+                else
+                {
+                    throw new ArgumentNullException("Account was not found!");
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException("Client was not found!");
+            }
+        }
+
+
     }
 }
