@@ -71,5 +71,13 @@ namespace BankWebAPI.ClassLibrary.Repositories
 
         }
 
+        public async Task<List<AccountType>> GetAllTypesAsyncs()
+        {
+            var getAllQuery = "select id Id, account_type Type from account_type";
+            var ShopItemEntity = getAllQuery;
+            var entities = await _connection.QueryAsync<AccountType>(getAllQuery);
+            return entities.ToList();
+        }
+
     }
 }
