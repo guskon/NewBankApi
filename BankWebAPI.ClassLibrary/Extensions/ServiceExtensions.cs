@@ -21,6 +21,7 @@ namespace BankWebAPI.ClassLibrary.Extensions
             services.AddTransient<ClientRepository>();
             services.AddTransient<AccountRepository>();
             services.AddTransient<AddressRepository>();
+            services.AddTransient<AccountTypeRepository>();
         }
     }
 }
