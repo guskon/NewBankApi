@@ -10,7 +10,6 @@ namespace BankWebAPI.DTOs
     {
         public string AccountNumber { get; set; }
         public int AccountType { get; set; }
-        public double Balance { get; set; }
 
     }
 }

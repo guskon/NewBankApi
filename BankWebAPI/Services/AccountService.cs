@@ -18,7 +18,16 @@ namespace BankWebAPI.Services
 
         public async Task AddAsync(CreateAccountDTO createAcount)
         {
-            await _accountRepository.AddAsyncs(_mapper.Map<Account>(createAcount));
+
+            if (await _accountRepository.GetAccountByAccountNumber(createAcount.AccountNumber) == null)
+            {
+                throw new ArgumentNullException("Cant create account with same account number");
+            }
+            else
+            {
+                await _accountRepository.AddAsyncs(_mapper.Map<Account>(createAcount));
+            }
+            
         }
 
         public async Task UpdateAccountTypesAsync(AccountTypesUpdateDTO cupdateAcountType)
@@ -26,9 +35,17 @@ namespace BankWebAPI.Services
             await _accountRepository.UpdateAccountTypesAsync(_mapper.Map<Account>(cupdateAcountType));
         }
 
-        public async Task UpdateAccountBalance(AccountBalanceTopopDTO accountBalanceTopopDTO)
+        public async Task UpdateAccountBalance(int id, AccountBalanceTopopDTO accountBalanceTopopDTO)
         {
-            await _accountRepository.UpdateAccountBalanceAsync(_mapper.Map<Account>(accountBalanceTopopDTO));
+            if (await _accountRepository.GetAccountByIdDBAsync(id) == null)
+            {
+                throw new ArgumentNullException("Account not found!");
+            }
+            else
+            {
+                await _accountRepository.UpdateAccountBalanceAsync(id, _mapper.Map<Account>(accountBalanceTopopDTO));
+            }
+            
         }
 
 

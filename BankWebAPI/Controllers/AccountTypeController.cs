@@ -38,5 +38,12 @@ namespace BankWebAPI.Controllers
             return StatusCode(201);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAccountTypeById(int id)
+        {
+            await _accountTypeService.DeleteAccountTypeById(id);
+            return NoContent();
+        }
+
     }
 }

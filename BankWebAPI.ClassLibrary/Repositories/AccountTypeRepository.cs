@@ -57,6 +57,19 @@ namespace BankWebAPI.ClassLibrary.Repositories
                 id
             });
         }
+        public async Task DeleteAccountTypeById(int id)
+        {
+            Console.WriteLine(id);
+            string commandText = $"DELETE FROM account_type WHERE ID=@id";
+
+            var queryArguments = new
+            {
+                id = id,
+            };
+
+            await _connection.ExecuteAsync(commandText, queryArguments);
+
+        }
 
     }
 }
