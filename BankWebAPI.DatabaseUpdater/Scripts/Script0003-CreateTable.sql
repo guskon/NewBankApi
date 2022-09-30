@@ -5,11 +5,12 @@
 	account_type int NOT NULL,
 	balance decimal NOT NULL,
 	client_id INTEGER,
-	CONSTRAINT fk_client_id
-		FOREIGN KEY (client_id)
-			REFERENCES clients (id)
-)
+		CONSTRAINT fk_client_id
+			FOREIGN KEY (client_id)
+				REFERENCES clients (id)
+);
+
 CREATE TABLE account_type(
 	id serial PRIMARY KEY,
 	name TEXT NOT NULL
-)
+);
