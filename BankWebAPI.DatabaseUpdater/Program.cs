@@ -3,7 +3,7 @@ using System.Reflection;
 
 var connectionString =
         args.FirstOrDefault()
-        ?? "Server=localhost; Database=bank_db; User Id=postgres; Password=Postgre";
+        ?? "Server=localhost; Database=bankserver; User Id=postgres; Password=naujasPW150";
 EnsureDatabase.For.PostgresqlDatabase(connectionString);
 var upgrader =
     DeployChanges.To

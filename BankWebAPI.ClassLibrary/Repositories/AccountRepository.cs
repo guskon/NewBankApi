@@ -11,7 +11,7 @@ namespace BankWebAPI.ClassLibrary.Repositories
         {
             _connection = connection;
         }
-        public async Task AddAsyncs(Account account)
+        public async Task AddAsync(Account account)
         {
             var insertQuery = "INSERT INTO account (account_number, creation_date, account_type, balance) VALUES(@account_number, @creation_date, @account_type, @balance)";
 
@@ -42,7 +42,7 @@ namespace BankWebAPI.ClassLibrary.Repositories
             await _connection.ExecuteAsync(commandText, queryArgs);
         }
 
-        public async Task UpdateAccountBalanceAsync(int id, Account account)
+        public async Task UpdateAccountBalanceAsync(Account account)
         {
             var commandText = $@"UPDATE account
                 SET balance = balance + @balance WHERE id = @id";
@@ -73,7 +73,21 @@ namespace BankWebAPI.ClassLibrary.Repositories
         }
 
 
+        public async Task<Account> GetAccountByIdDBAsync(int id)
+        {
+            return await _connection.QuerySingleOrDefaultAsync<Account>("SELECT account_number AccountNumber, creation_date CreationDate, account_type AccountType, balance, client_id ClientId FROM account WHERE id=@Id", new
+            {
+                id
+            });
+        }
 
+        public async Task<Account> GetAccountByAccountNumberDBAsync(string accountNumber)
+        {
+            return await _connection.QuerySingleOrDefaultAsync<Account>("SELECT account_number AccountNumber, creation_date CreationDate, account_type AccountType, balance, client_id ClientId FROM account WHERE account_number = @account_number", new
+            {
+                account_number = accountNumber
+            }); ;
+        }
     }
 
 }

@@ -36,7 +36,5 @@ namespace BankWebAPI.Controllers
         {
             return Ok(await _clientService.GetClientByIdAsync(id));
         }
-
-
     }
 }

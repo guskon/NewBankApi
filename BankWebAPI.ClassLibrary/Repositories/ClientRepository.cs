@@ -39,6 +39,15 @@ namespace BankWebAPI.ClassLibrary.Repositories
             });
         }
 
+        public async Task AssignAccountToClientDBAsync(int clientId, int accountId)
+        {
+            await _connection.ExecuteAsync("UPDATE account SET client_id=@client_id WHERE id = @account_id", new
+            {
+                client_id = clientId,
+                account_id = accountId,
+            });
+        }
+
         public async Task<Client> GetClientByIdDBAsync(int id)
         {
             return _connection.QuerySingleOrDefault<Client>("SELECT first_name FirstName, last_name LastName, personal_code PersonalCode FROM clients WHERE id=@Id", new
