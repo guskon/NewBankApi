@@ -43,5 +43,11 @@ namespace BankWebAPI.Controllers
         {
             return Ok(await _accountService.GetAccountByIdAsync(id));
         }
+
+        [HttpGet("getAcountByType/{id}")]
+        public async Task<IActionResult> GetByTypeId(int id)
+        {
+            return Ok(await _accountService.GetByTypeIdAsync(id));
+        }
     }
 }

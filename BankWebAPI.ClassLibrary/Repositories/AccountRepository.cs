@@ -81,6 +81,14 @@ namespace BankWebAPI.ClassLibrary.Repositories
                 account_number = accountNumber
             }); ;
         }
+
+        public async Task<List<Account>> GetByTypeIdAsync(int id)
+        {
+            var getAllQuery = "SELECT id Id, account_number AccountNumber, creation_date CreationDate, account_type AccountType, balance, client_id ClientId FROM account WHERE account_type = @id";
+            var ShopItemEntity = getAllQuery;
+            var entities = await _connection.QueryAsync<Account>(getAllQuery, new {id});
+            return entities.ToList();
+        }
     }
 
 }
