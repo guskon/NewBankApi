@@ -56,6 +56,20 @@ namespace BankWebAPI.ClassLibrary.Repositories
 
             await _connection.ExecuteAsync(commandText, queryArgs);
         }
+
+
+        public async Task AddAcountTypeAsync(AccountType accountType)
+        {
+            var insertQuery = "INSERT INTO account_type (name) VALUES(@name)";
+
+            var queryArguments = new
+            {
+                name = accountType.Name,
+            };
+
+            await _connection.ExecuteAsync(insertQuery, queryArguments);
+
+        }
     }
 
     }
